@@ -1,0 +1,30 @@
+CREATE TABLE orders (
+  order_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  customer_name VARCHAR(25) NOT NULL,
+  email TEXT NOT NULL ,
+  phone_number VARCHAR(10) NOT NULL ,
+  street_address TEXT NOT NULL ,
+  suburb TEXT NOT NULL ,
+  state TEXT NOT NULL ,
+  postcode VARCHAR(4) NOT NULL ,
+  product_name TEXT NOT NULL ,
+  model TEXT NOT NULL ,
+  memory TEXT NOT NULL ,
+  quantity INT NOT NULL ,
+  card_type TEXT NOT NULL ,
+  card_name TEXT NOT NULL ,
+  card_number VARCHAR(16) NOT NULL ,
+  expiry_date DATE NOT NULL ,
+  ccv INT(4) NOT NULL ,
+  order_cost INT NOT NULL ,
+  order_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,
+  order_status TEXT NOT NULL 
+);
+
+
+
+
+
+SELECT model FROM orders GROUP BY order_id ORDER BY SUM(quantity) DESC LIMIT 1
+
+SELECT AVG(order_cost) AS "Total sales" FROM orders
